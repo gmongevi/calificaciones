@@ -7,11 +7,70 @@ format: html
 ## Carga de datos
 
 ```{r}
+#| label: carga-datos
+
 datos <- read.csv (
 "https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2025-i/refs/heads/main/datos/kaggle/StudentsPerformance.csv"
 )
 ```
 
 ## Grafico de dispersion
+```{r}
+#| label: grafico-dispersion
+
+plot(
+  x = datos$writing.score,
+  y = datos$math.score,
+  main = "Distribución de las calificaciones en matemáticas y en escritura.",
+  xlab = "Calificación en escritura",
+  ylab = "Calificación en matemáticas",
+  pch = 19, col = "steelblue"
+)
+```
+
+
 
 ## Grafico de barras
+```{r}
+#| label: grafico-barras
+
+#Calcular el promedio de math score por genero (binario)
+gender_math <- aggregate(
+  data = datos,
+  datos$math.score ~ datos$gender,
+  FUN = mean,
+  na.rm = TRUE
+)
+
+#Ordenar
+gender_math <- 
+  gender_math[order(gender_math$`datos$math.score`), ]
+
+# Grafico de barras
+barplot(
+  height = gender_math$`datos$math.score`,
+  names.arg = gender_math$`datos$gender`,
+  horiz = FALSE,
+  las = 1, 
+  col = "red",
+  main = "Promedio de calificación en matemáticas por género (binario)",
+  ylab = "Calificación en matemáticas"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
