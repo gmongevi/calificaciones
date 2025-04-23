@@ -1,0 +1,17 @@
+---
+title: "Analisis de datos de calificaciones"
+author: "Gabriel Monge Vidal"
+format: html
+---
+
+## Carga de datos
+
+```{r}
+datos <- read.csv (
+"https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2025-i/refs/heads/main/datos/kaggle/StudentsPerformance.csv"
+)
+```
+
+## Grafico de dispersion
+
+## Grafico de barras
